@@ -1,39 +1,337 @@
-<!-- 🌹 EROS - CONSULTORA DE VÍNCULOS -->
-<section id="hero" style="background:#fdf4f8; color:#111; text-align:center; padding:100px 20px; font-family:'Playfair Display', serif;">
-  <h1 style="font-size:2.8rem; color:#e91e63; margin-bottom:20px;">Eros, consultora de vínculos</h1>
-  <p style="font-size:1.3rem; line-height:1.8; max-width:700px; margin:0 auto;">
-    Un espacio íntimo, confidencial y humano donde acompaño a quienes buscan amor, conexión real y vínculos genuinos.
-  </p>
-  <a href="#matchmaking" style="display:inline-block; margin-top:40px; padding:14px 32px; background-color:#e91e63; color:#fff; border-radius:40px; text-decoration:none; font-size:1.1rem;">Descubrí cómo puedo ayudarte</a>
-</section>
+import React, { useState } from 'react';
+import { Mail, Heart, Users, Sparkles, Send } from 'lucide-react';
 
-<!-- 💞 MATCHMAKING -->
-<section id="matchmaking" style="background:#fff; padding:90px 20px; text-align:center; font-family:'Poppins', sans-serif;">
-  <div style="max-width:900px; margin:0 auto;">
-    <h2 style="font-size:2.2rem; color:#e91e63; margin-bottom:30px;">Matchmaking personalizado</h2>
-    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:30px;">
-      El matchmaking es un proceso de <strong>búsqueda personalizada</strong> para conectar a personas que desean construir una relación estable y real.  
-      No es una app, ni un algoritmo: es un acompañamiento humano, cuidadoso y confidencial.
-    </p>
-    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:40px;">
-      Analizo tu historia, tus valores y lo que buscás en una pareja para presentarte personas compatibles con vos en esencia, no solo en gustos.
-    </p>
-    <a href="#contacto" style="display:inline-block; background:#e91e63; color:#fff; padding:14px 32px; border-radius:40px; text-decoration:none; font-size:1.1rem;">Quiero conocer a alguien compatible</a>
-  </div>
-</section>
+const App = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-<!-- 🌸 COACHING VINCULAR -->
-<section id="coaching" style="background:#fdf4f8; padding:90px 20px; text-align:center; font-family:'Poppins', sans-serif;">
-  <div style="max-width:900px; margin:0 auto;">
-    <h2 style="font-size:2.2rem; color:#e91e63; margin-bottom:30px;">Coaching vincular</h2>
-    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:30px;">
-      El coaching vincular es un proceso de <strong>autoconocimiento y preparación emocional</strong> para amar desde un lugar más consciente.  
-      A veces no se trata solo de encontrar amor, sino de estar listos para recibirlo.
-    </p>
-    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:40px;">
-      Te acompaño a revisar patrones, sanar vínculos pasados y abrirte a una nueva etapa emocional, más sana y auténtica.
-    </p>
-    <a href="#contacto" style="display:inline-block; background:#e91e63; color:#fff; padding:14px 32px; border-radius:40px; text-decoration:none; font-size:1.1rem;">Quiero agendar mi sesión</a>
-  </div>
-</section>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+    
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // In a real app, you would send this data to your backend
+      console.log('Form data:', formData);
+      
+      setSubmitSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setSubmitError('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50">
+      {/* Header */}
+      <header className="bg-white/80 backdrop-blur-sm border-b border-rose-100 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <nav className="flex justify-between items-center">
+            <div className="text-2xl font-serif font-bold text-rose-700">Eros</div>
+            <button 
+              onClick={() => document.getElementById('contact-modal').classList.remove('hidden')}
+              className="bg-rose-500 hover:bg-rose-600 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300 flex items-center gap-2"
+            >
+              <Mail className="w-4 h-4" />
+              Contactar
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-gray-800 mb-8 leading-tight">
+            Buscar el amor es un acto de valentía.
+          </h1>
+          <p className="text-xl text-gray-600 font-sans leading-relaxed max-w-3xl mx-auto">
+            Te acompaño a encontrar un vínculo real
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div className="space-y-6">
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Soy Antonella y trabajo de forma individual con cada persona que desea formar una pareja real. No ofrezco promesas vacías, sino encuentros posibles, guiados por un proceso cuidado y serio.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Cada persona tiene una historia única. Mi misión es ayudarte a crear la tuya junto a alguien que esté dispuesto a caminar con vos desde el amor y el compromiso.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Acompaño a personas solteras que desean formar una pareja, desde un lugar humano, sensible y real. No soy psicóloga, ni terapeuta: simplemente ofrezco un espacio de escucha, conexión y encuentro, basado en mi experiencia personal y mi profundo interés por los vínculos.
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-rose-100 to-pink-100 rounded-3xl p-8 border border-rose-200">
+              <div className="text-center">
+                <div className="w-32 h-32 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                  <Heart className="w-16 h-16 text-white" />
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-gray-800 mb-4">En Eros</h3>
+                <p className="text-gray-700 font-sans leading-relaxed">
+                  Trabajo de manera personalizada, confidencial y con mucho respeto por los tiempos y deseos de cada persona. No se trata solo de encontrar a alguien, sino de construir un vínculo sano y verdadero.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Services Section */}
+          <div className="mb-20">
+            <h2 className="text-4xl font-serif font-bold text-center text-gray-800 mb-16">
+              Mi acompañamiento
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Service 1 */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-rose-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <Sparkles className="w-8 h-8 text-rose-600" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 text-center">✨ Entrevista inicial gratuita</h3>
+                <p className="text-gray-600 text-center font-sans leading-relaxed">
+                  Una primera charla para conocerte, entender qué buscás y sumar tu perfil a mi base de datos. Sin compromiso. Solo escucharte y orientarte.
+                </p>
+              </div>
+
+              {/* Service 2 */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-rose-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <Heart className="w-8 h-8 text-pink-600" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 text-center">💘 Matchmaking personalizado</h3>
+                <p className="text-gray-600 text-center font-sans leading-relaxed">
+                  Busco activamente personas compatibles con vos, según tus valores, estilo de vida y deseos. Cada propuesta es pensada exclusivamente para vos.
+                </p>
+              </div>
+
+              {/* Service 3 */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-rose-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <Users className="w-8 h-8 text-rose-600" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-gray-800 mb-4 text-center">🌱 Coaching vincular</h3>
+                <p className="text-gray-600 text-center font-sans leading-relaxed">
+                  Te acompaño emocionalmente para que puedas fortalecer la relación con vos misma/o y prepararte para recibir una relación sana. Sanamos patrones, trabajamos miedos, y abrimos el corazón desde el amor propio.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* My Story */}
+          <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-3xl p-12 mb-20 border border-rose-100">
+            <h2 className="text-4xl font-serif font-bold text-gray-800 mb-8 text-center">Mi historia</h2>
+            <div className="max-w-4xl mx-auto space-y-6">
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Eros empezó en 2020, en plena pandemia. En ese momento, por cosas del destino, quedé varada en Buenos Aires. Fue ahí donde comenzó este proyecto, con mucha ilusión… y mucha ingenuidad también.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Al principio se llamó Crowlove, pero con el tiempo dejé de sentirme identificada con la niña sin experiencia que creó esa primera versión de la consultora.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Hoy, después de varios años, mucha experiencia, unas cuantas lágrimas y algunos tropezones, este espacio se transformó.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Ya no es un experimento. Es un compromiso.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Trabajo sola, y elijo hacerlo así. Porque quiero estar verdaderamente presente con cada persona que acompaño. Porque valoro lo íntimo, lo cuidado, lo honesto.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans font-serif italic">
+                "Eros no es una agencia de citas. Es una consultora que se toma el amor en serio."
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Donde cada historia es escuchada, pensada, y acompañada con tiempo.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed font-sans">
+                Porque creo que amar bien también se aprende. Y que cada quien merece una oportunidad real de encontrarse, con otro y consigo mismo.
+              </p>
+            </div>
+          </div>
+
+          {/* Why Choose Me */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif font-bold text-gray-800 mb-8">🤍 ¿Por qué elegirme?</h2>
+            <div className="max-w-2xl mx-auto space-y-4">
+              <p className="text-lg text-gray-700 font-sans leading-relaxed">
+                Porque creo en el amor real.
+              </p>
+              <p className="text-lg text-gray-700 font-sans leading-relaxed">
+                Porque me involucro de verdad con cada historia.
+              </p>
+              <p className="text-lg text-gray-700 font-sans leading-relaxed">
+                Porque trabajo sola, cuidando cada detalle y respetando profundamente tu intimidad.
+              </p>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="bg-gradient-to-r from-rose-500 to-pink-500 rounded-3xl p-12 text-center text-white">
+            <h3 className="text-3xl font-serif font-bold mb-6">📩 ¿Querés empezar?</h3>
+            <p className="text-xl mb-8 font-sans opacity-90">
+              Completá el formulario de contacto o escribime directamente. Estoy acá para escucharte.
+            </p>
+            <button 
+              onClick={() => document.getElementById('contact-modal').classList.remove('hidden')}
+              className="bg-white text-rose-500 hover:bg-rose-50 px-8 py-4 rounded-full font-serif font-bold text-lg transition-colors duration-300 transform hover:scale-105"
+            >
+              Quiero mi entrevista gratuita
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Modal */}
+      <div id="contact-modal" className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 hidden">
+        <div className="bg-white rounded-3xl max-w-md w-full p-8">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-2xl font-serif font-bold text-gray-800">Contacto</h3>
+            <button 
+              onClick={() => document.getElementById('contact-modal').classList.add('hidden')}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              ×
+            </button>
+          </div>
+          
+          {submitSuccess ? (
+            <div className="text-center py-8">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Send className="w-8 h-8 text-green-600" />
+              </div>
+              <h4 className="text-xl font-semibold text-gray-800 mb-2">¡Gracias por contactarme!</h4>
+              <p className="text-gray-600">Tu mensaje ha sido enviado con éxito. Te responderé lo antes posible.</p>
+              <button 
+                onClick={() => {
+                  document.getElementById('contact-modal').classList.add('hidden');
+                  setSubmitSuccess(false);
+                }}
+                className="mt-6 bg-rose-500 hover:bg-rose-600 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300"
+              >
+                Cerrar
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {submitError && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                  {submitError}
+                </div>
+              )}
+              
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  Nombre completo
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Correo electrónico
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                  placeholder="tu@email.com"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  Mensaje
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+                  placeholder="Cuéntame sobre ti y lo que buscas..."
+                />
+              </div>
+              
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('contact-modal').classList.add('hidden')}
+                  className="mr-3 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-6 py-2 bg-rose-500 hover:bg-rose-600 text-white rounded-lg font-medium transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.644z"></path>
+                      </svg>
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Enviar mensaje
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-8 mt-16">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-gray-400 font-sans">
+            © 2025 Eros. Amor con propósito. Todos los derechos reservados.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
