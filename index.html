@@ -1,111 +1,41 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eros, consultora de vínculos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* GENERAL */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Poppins', sans-serif; background-color: #fff5f8; color: #333; line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
+<!-- 🌹 EROS - CONSULTORA DE VÍNCULOS -->
+<section id="hero" style="background:#fdf4f8; color:#111; text-align:center; padding:100px 20px; font-family:'Playfair Display', serif;">
+  <h1 style="font-size:2.8rem; color:#e91e63; margin-bottom:20px;">Eros, consultora de vínculos</h1>
+  <p style="font-size:1.3rem; line-height:1.8; max-width:700px; margin:0 auto;">
+    Un espacio íntimo, confidencial y humano donde acompaño a quienes buscan amor, conexión real y vínculos genuinos.
+  </p>
+  <a href="#matchmaking" style="display:inline-block; margin-top:40px; padding:14px 32px; background-color:#e91e63; color:#fff; border-radius:40px; text-decoration:none; font-size:1.1rem;">Descubrí cómo puedo ayudarte</a>
+</section>
 
-    /* HEADER */
-    header { background: linear-gradient(135deg,#f06292,#f8a5c2); color: white; text-align: center; padding: 5rem 1rem 3rem; position: relative; }
-    header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.3rem; margin-bottom: 2rem; }
-    .header-btn { background: white; color: #f06292; padding: 0.8rem 2rem; font-weight: 600; border-radius: 50px; border: none; cursor: pointer; transition: background 0.3s ease,color 0.3s ease; }
-    .header-btn:hover { background: #f06292; color: white; }
+<!-- 💞 MATCHMAKING -->
+<section id="matchmaking" style="background:#fff; padding:90px 20px; text-align:center; font-family:'Poppins', sans-serif;">
+  <div style="max-width:900px; margin:0 auto;">
+    <h2 style="font-size:2.2rem; color:#e91e63; margin-bottom:30px;">Matchmaking personalizado</h2>
+    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:30px;">
+      El matchmaking es un proceso de <strong>búsqueda personalizada</strong> para conectar a personas que desean construir una relación estable y real.  
+      No es una app, ni un algoritmo: es un acompañamiento humano, cuidadoso y confidencial.
+    </p>
+    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:40px;">
+      Analizo tu historia, tus valores y lo que buscás en una pareja para presentarte personas compatibles con vos en esencia, no solo en gustos.
+    </p>
+    <a href="#contacto" style="display:inline-block; background:#e91e63; color:#fff; padding:14px 32px; border-radius:40px; text-decoration:none; font-size:1.1rem;">Quiero conocer a alguien compatible</a>
+  </div>
+</section>
 
-    /* SECCIONES */
-    section { padding: 4rem 1rem; max-width: 1100px; margin: 0 auto; }
-    section h2 { text-align: center; font-size: 2.4rem; margin-bottom: 1rem; color: #f06292; }
-    section p { text-align: center; font-size: 1.1rem; margin-bottom: 2rem; max-width: 750px; margin-left:auto;margin-right:auto; }
+<!-- 🌸 COACHING VINCULAR -->
+<section id="coaching" style="background:#fdf4f8; padding:90px 20px; text-align:center; font-family:'Poppins', sans-serif;">
+  <div style="max-width:900px; margin:0 auto;">
+    <h2 style="font-size:2.2rem; color:#e91e63; margin-bottom:30px;">Coaching vincular</h2>
+    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:30px;">
+      El coaching vincular es un proceso de <strong>autoconocimiento y preparación emocional</strong> para amar desde un lugar más consciente.  
+      A veces no se trata solo de encontrar amor, sino de estar listos para recibirlo.
+    </p>
+    <p style="font-size:1.1rem; line-height:1.8; margin-bottom:40px;">
+      Te acompaño a revisar patrones, sanar vínculos pasados y abrirte a una nueva etapa emocional, más sana y auténtica.
+    </p>
+    <a href="#contacto" style="display:inline-block; background:#e91e63; color:#fff; padding:14px 32px; border-radius:40px; text-decoration:none; font-size:1.1rem;">Quiero agendar mi sesión</a>
+  </div>
+</section>
 
-    /* SERVICIOS */
-    .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
-    .service-card { background: white; border-radius: 16px; padding: 2rem; flex: 1 1 300px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; }
-    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 24px rgba(0,0,0,0.15); }
-    .service-card i { font-size: 2.5rem; color: #f06292; margin-bottom: 1rem; }
-    .service-card h4 { margin-top:0.5rem;color:#f06292;font-size:1.3rem;margin-bottom:0.5rem; }
-    .service-card p { font-size:1rem; color:#555; }
-
-    /* FORMULARIO */
-    form { display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; }
-    form input, form textarea, form button { padding: 0.9rem; margin-bottom:1rem; font-size:1rem; border-radius:8px; border:1px solid #ccc; width:100%; }
-    form button { background:#f06292; color:white; font-weight:600; border:none; cursor:pointer; transition:background 0.3s ease; }
-    form button:hover { background:#e91e63; }
-
-    /* SOBRE ANTONELLA */
-    .about { background: #ffe4ec; padding: 4rem 1rem; text-align: center; border-radius: 12px; margin: 2rem 1rem; }
-    .about img { width: 150px; height:150px; border-radius:50%; margin-bottom:1rem; object-fit:cover; border: 4px solid #f06292; }
-    .about h3 { font-size:2rem; margin-bottom:1rem; color:#f06292; }
-    .about p { font-size:1.1rem; max-width:700px; margin:0 auto; }
-
-    /* FOOTER */
-    footer { background:#000; color:white; text-align:center; padding:2rem; margin-top:2rem; }
-
-    /* RESPONSIVE */
-    @media (max-width:768px){ header h1{font-size:2rem;} section h2{font-size:1.8rem;} .services{flex-direction:column;} }
-  </style>
-</head>
-<body>
-
-  <!-- HEADER -->
-  <header>
-    <h1>Bienvenido/a a Eros</h1>
-    <p>Un espacio seguro, confiable y personalizado para quienes se animan al amor</p>
-    <button class="header-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Contactarme</button>
-  </header>
-
-  <!-- INVITACIÓN -->
-  <section>
-    <h2>Forma parte de Eros</h2>
-    <p>Este espacio es para todos aquellos que buscan vínculos reales, profundos y saludables. Aquí cada paso hacia el amor es acompañado con <strong>confidencialidad, amabilidad y compromiso</strong>. Te invitamos a animarte al amor y descubrir conexiones auténticas y significativas.</p>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section>
-    <h2>Servicios que ofrezco</h2>
-    <div class="services">
-      <div class="service-card">
-        <i class="fas fa-heart"></i>
-        <h4>Matchmaking personalizado</h4>
-        <p>Conexión individual con perfiles compatibles, para relaciones auténticas y duraderas.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-user-friends"></i>
-        <h4>Coaching vincular</h4>
-        <p>Acompañamiento emocional y estrategias para prepararte para relaciones sanas y significativas.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORMULARIO DE CONTACTO -->
-  <section id="contact">
-    <h2>Escribime</h2>
-    <p>Dejanos tu mensaje y te responderé con discreción y compromiso</p>
-    <form action="mailto:antosalt9@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" placeholder="Escribe tu mensaje..." rows="5" required></textarea>
-      <button type="submit">Enviar mensaje</button>
-    </form>
-  </section>
-
-  <!-- SOBRE ANTONELLA -->
-  <section class="about">
-    <img src="https://via.placeholder.com/150" alt="Antonella Salteño">
-    <h3>Hola, soy Antonella Salteño</h3>
-    <p>Creé Eros después de darme cuenta de que el nombre anterior ya no representaba mi visión. Mi objetivo es acompañar a quienes buscan amor verdadero, con servicios diseñados para brindar <strong>confianza, discreción y resultados reales</strong>. Cada acción y servicio está guiado por mi compromiso personal y profesional para ayudarte a encontrar vínculos auténticos y significativos.</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Eros, consultora de vínculos</p>
-  </footer>
-
-</body>
-</html>
+<!-- ✨ EVENTOS PARA SOLTEROS -->
+<section id="evento
